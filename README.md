@@ -8,32 +8,21 @@ This is a very simple cookbook to deploy resque scheduler on a simple instance a
 
 In your custom layer, you must add this recipes to each stage
 
-**Configure**
+**Setup**
 
-rails::configure
-opsworks-resque-scheduler::configure
+opsworks-resque-scheduler::setup
 
 **Deploy**
 
-deploy::rails
 opsworks-resque-scheduler::restart
 
 **Shutdown**
 
 opsworks-resque-scheduler::stop
 
-# Attributes
-
-It expects an array with the queues of workers to run, for example
-```ruby
-default['resque']['path'] = "/srv/www/mailee_staging/current"
-default['resque']['rails_env'] = "preproduction"
-
-```
-
 # Recipes
 
-**opsworks-resque-scheduler::configure** - initial setup
+**opsworks-resque-scheduler::setup** - initial setup
 **opsworks-resque-scheduler::restart** - restart the workers (after deploy)
 **opsworks-resque-scheduler::stop** - stop the workers (shutdown)
 
