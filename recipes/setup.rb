@@ -7,9 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 node[:deploy].each do |application, deploy|
+  env = (deploy[:environment] || {}).map{|k,v| "#{k}=#{v}"}.join(' ')
+
   template "/etc/init/resque-scheduler-#{application}.conf" do
     source "resque-scheduler.conf.erb"
     mode "0755"
-    variables application: application, deploy: deploy
+    variables env: env, application: application, deploy: deploy
   end
 end
