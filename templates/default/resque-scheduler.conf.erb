@@ -5,7 +5,7 @@ respawn
 <% @deploy[:environment].each do |k,v| %>
 env <%= k %>=<%= v %>
 <% end %>
-env RAILS_ENV=<%= @deploy[:rails_env] %>
+env RACK_ENV=<%= @rack_env %>
 env TERM=1
 
 pre-start script
